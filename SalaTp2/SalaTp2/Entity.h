@@ -14,6 +14,8 @@ public:
 	sf::RenderWindow* window;
 	sf::Sprite sprite;
 	sf::Texture texture;
+	sf::Time timer;
+	float velocity;
 private:
 
 };

@@ -1,7 +1,8 @@
 #include "Player.h"
 
 Player::Player() {
-	
+	timer = sf::seconds(0.01f);
+	velocity = 50;
 }
 void Player::Draw() {
 	
@@ -11,16 +12,16 @@ void Player::Draw() {
 }
 void Player::Move() {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
-		sprite.move(1, 0);
+		sprite.move(velocity*timer.asSeconds(), 0);
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
-		sprite.move(-1, 0);
+		sprite.move(-velocity*timer.asSeconds(), 0);
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
-		sprite.move(0, 1);
+		sprite.move(0, velocity*timer.asSeconds());
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
-		sprite.move(0, -1);
+		sprite.move(0, -velocity*timer.asSeconds());
 	}
 		
 	
