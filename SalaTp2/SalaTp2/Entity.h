@@ -7,7 +7,7 @@ class Entity
 {
 public:
 	Entity();
-	virtual void Initialize()=0;
+	virtual void Initialize(float posx,float posy)=0;
 	virtual void Draw()=0;
 	virtual void Move()=0;
 	virtual void Destroy()=0;

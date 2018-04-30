@@ -6,15 +6,19 @@
 #include<SFML/Window.hpp>
 #include"Entity.h"
 #include"Player.h"
+#include"EnemyManager.h"
 class GameManager
 {
 public:
+	float screenWidth=800;
+	float screenHeight=600;
 	GameManager();
 	void Init();
 	void UpdateDraw();
 	void DestroyEntity();
 	sf::RenderWindow* window;
 	Entity*basePlayer;
+	EnemyManager*enemyManager;
 private:
 	
 

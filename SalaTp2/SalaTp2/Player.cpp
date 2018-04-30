@@ -28,12 +28,12 @@ void Player::Move() {
 }
 
 
-void Player::Initialize() {
+void Player::Initialize(float posx,float posy) {
 	if (!texture.loadFromFile("assets/_h.png")) {
 		std::cout << "error";
 	};
 	sprite.setTexture(texture);
-	sprite.setPosition(100, 100);
+	sprite.setPosition(posx, posy);
 	
 }
 void Player::Destroy() {

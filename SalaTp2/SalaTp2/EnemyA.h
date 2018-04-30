@@ -1,18 +1,18 @@
-#ifndef PLAYER_H
-#define PLAYER_H
+#ifndef ENEMY_A_H
+#define ENEMY_A_H
 #include"Entity.h"
-class Player: public Entity 
+class EnemyA: public Entity
 {
 public:
-	Player ();
+	EnemyA();
+	//~EnemyA();
 	virtual void Initialize(float posx,float posy);
 	virtual void Draw();
 	virtual void Move();
 	virtual void Destroy();
-	
 private:
-	
-	
 
 };
-#endif // !PLAYER_H
+
+
+#endif // !ENEMY_A_H

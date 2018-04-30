@@ -6,11 +6,12 @@
 #include"GameManager.h"
 using namespace std;
 int main() {
-	int n;
 	
-	sf::RenderWindow window(sf::VideoMode(800, 600), "My window");
+	
+	
 	
 	GameManager*gameManager = new GameManager();
+	sf::RenderWindow window(sf::VideoMode(gameManager->screenWidth, gameManager->screenHeight), "My window");
 	gameManager->window = &window;
 	
 	gameManager->Init();
