@@ -7,8 +7,9 @@ class Entity
 {
 public:
 	Entity();
-	virtual void Initialize(float posx,float posy)=0;
+	virtual void Initialize()=0;
 	virtual void Draw()=0;
+	virtual void Position(float x, float y)=0;
 	virtual void Move()=0;
 	virtual void Destroy()=0;
 	sf::RenderWindow* window;
@@ -16,6 +17,7 @@ public:
 	sf::Texture texture;
 	sf::Time timer;
 	float velocity;
+	bool live = false;
 private:
 
 };

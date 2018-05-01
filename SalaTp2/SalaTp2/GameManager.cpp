@@ -3,7 +3,8 @@
 void GameManager::Init() {
 	basePlayer = new Player();
 	basePlayer->window = window;
-	basePlayer->Initialize(100,100);
+	basePlayer->Initialize();
+	basePlayer->Position(100, 300);
 
 	enemyManager = new EnemyManager();
 	enemyManager->window = window;

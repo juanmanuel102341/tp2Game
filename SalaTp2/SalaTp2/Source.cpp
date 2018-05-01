@@ -12,6 +12,7 @@ int main() {
 	
 	GameManager*gameManager = new GameManager();
 	sf::RenderWindow window(sf::VideoMode(gameManager->screenWidth, gameManager->screenHeight), "My window");
+	window.setFramerateLimit(60);
 	gameManager->window = &window;
 	
 	gameManager->Init();

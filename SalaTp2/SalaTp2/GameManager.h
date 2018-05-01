@@ -10,8 +10,8 @@
 class GameManager
 {
 public:
-	float screenWidth=800;
-	float screenHeight=600;
+	int screenWidth=800;
+	int screenHeight=600;
 	GameManager();
 	void Init();
 	void UpdateDraw();

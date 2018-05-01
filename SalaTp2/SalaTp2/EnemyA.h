@@ -6,10 +6,12 @@ class EnemyA: public Entity
 public:
 	EnemyA();
 	//~EnemyA();
-	virtual void Initialize(float posx,float posy);
+	virtual void Initialize();
+	virtual void Position(float x, float y);
 	virtual void Draw();
 	virtual void Move();
 	virtual void Destroy();
+	
 private:
 
 };

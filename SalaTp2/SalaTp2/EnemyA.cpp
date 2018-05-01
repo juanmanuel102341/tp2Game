@@ -1,11 +1,14 @@
 #include"EnemyA.h"
 
-void EnemyA::Initialize(float posx,float posy) {
+void EnemyA::Initialize() {
 	if (!texture.loadFromFile("assets/_rept_1.png")) {
 		std::cout << "error";
 	};
 	sprite.setTexture(texture);
-	sprite.setPosition(posx, posy);
+}
+void EnemyA::Position(float x, float y) {
+	sprite.setPosition(x, y);
+
 }
 void EnemyA::Draw(){
 	window->draw(sprite);
@@ -19,5 +22,5 @@ void EnemyA::Destroy(){
 }
 EnemyA::EnemyA() {
 	timer= sf::seconds(0.01f);
-	velocity = 25;
+	velocity = 250;
 }
