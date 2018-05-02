@@ -5,14 +5,14 @@ void EnemyManager::Init(){
 		e = new EnemyA();
 		e->window = window;
 		e->Initialize();
-		vecA.push_back(e);
+		listDead.push_back(e);
 	}
-	std::vector<Entity*>::iterator it=vecA.begin();
+	std::list<Entity*>::iterator it=listDead.begin();
 	Entity*e = *it;
 	float y = 50 + rand() % 580;
 	e->Position(800, y);
 	e->live = true;
-	listA.push_back(e);
+	listLive.push_back(e);
 	/*enemiesA = new EnemyA();
 	enemiesA->window = window;
 	enemiesA->Initialize();
@@ -22,7 +22,7 @@ void EnemyManager::Init(){
 	}
 void EnemyManager::Draw() {
 	elapsed= clock.getElapsedTime();
-	for(std::list<Entity*>::iterator it = listA.begin(); it != listA.end(); ++it) {	
+	for(std::list<Entity*>::iterator it = listLive.begin(); it != listLive.end(); ++it) {	
 	
 		Entity*e=*it;
 		e->Draw();
@@ -31,13 +31,13 @@ void EnemyManager::Draw() {
 	//std::cout<<"tiempo "<<timing
 	if (elapsed.asSeconds() > 2) {
 		
-		listA.push_back(GetEnemy());
+		listLive.push_back(GetEnemy());
 		elapsed = clock.restart();
 	}
 	TakeOut();
 }
 Entity* EnemyManager::GetEnemy() {
-	for (std::vector<Entity*>::iterator it = vecA.begin(); it != vecA.end(); ++it) {
+	for (std::list<Entity*>::iterator it = listDead.begin(); it != listDead.end(); ++it) {
 		Entity*e = *it;
 		if (!e->live) {
 			float y =50+ rand() %   600;
@@ -49,11 +49,11 @@ Entity* EnemyManager::GetEnemy() {
 	}
 }
 void EnemyManager::TakeOut() {
-	for (std::list<Entity*>::iterator it = listA.begin(); it != listA.end(); ++it) {
+	for (std::list<Entity*>::iterator it = listLive.begin(); it != listLive.end(); ++it) {
 		Entity*e = *it;
 		if (e->sprite.getPosition().x < 0) {
 			e->live = false;
-			listA.erase(it);
+			listLive.erase(it);
 			break;
 		}
 	}

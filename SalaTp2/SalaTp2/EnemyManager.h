@@ -20,14 +20,15 @@ public:
 	Entity* GetEnemy();
 	void TakeOut();
 	sf::RenderWindow* window;
-	sf::Time elapsed;
-	sf::Clock clock;
+
+
 	Entity* enemiesA;
-	std::vector<Entity*>vecA;
-	std::list<Entity*>listA;
+	std::list<Entity*>listDead;
+	std::list<Entity*>listLive;
 	
 private:
-
+	sf::Clock clock;
+	sf::Time elapsed;
 };
 
 #endif // !ENEMY_MANAGER_H

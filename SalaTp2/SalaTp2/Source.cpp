@@ -23,9 +23,11 @@ int main() {
 	};
     sf::Sprite spriteBack;
 	spriteBack.setTexture(textureBack);
+	sf::Event event;
+	sf::Clock clock;
 	while (window.isOpen())
 	{
-		sf::Event event;
+		
 
 
 		while (window.pollEvent(event))
@@ -41,7 +43,7 @@ int main() {
 			default:
 				break;
 			}
-		
+			
 		}
 		
 		window.clear(sf::Color::Black);
