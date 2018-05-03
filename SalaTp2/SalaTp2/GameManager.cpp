@@ -1,7 +1,7 @@
 #include"GameManager.h"
 
 void GameManager::Init() {
-	basePlayer = new Player();
+	//basePlayer = new Player();
 	basePlayer->window = window;
 	basePlayer->Initialize();
 	basePlayer->Position(100, 300);

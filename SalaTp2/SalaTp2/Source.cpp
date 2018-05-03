@@ -1,30 +1,30 @@
 //#include"Window.hpp"
-#include<SFML/Window.hpp>
-#include<SFML/Graphics.hpp>
+
 #include<iostream>
-#include"Player.h"
-#include"GameManager.h"
+#include"Game.h"
 using namespace std;
 int main() {
 	
+	Game game;
+	game.Run();
+		
 	
+	//GameManager*gameManager = new GameManager();
+	//sf::RenderWindow window(sf::VideoMode(gameManager->screenWidth, gameManager->screenHeight), "My window");
+	//window.setFramerateLimit(60);
+	//gameManager->window = &window;
 	
+//	gameManager->Init();
 	
-	GameManager*gameManager = new GameManager();
-	sf::RenderWindow window(sf::VideoMode(gameManager->screenWidth, gameManager->screenHeight), "My window");
-	window.setFramerateLimit(60);
-	gameManager->window = &window;
-	
-	gameManager->Init();
-	
-	sf::Texture textureBack;
-	if (!textureBack.loadFromFile("assets/space.png")) {
-		std::cout << "error";
-	};
-    sf::Sprite spriteBack;
-	spriteBack.setTexture(textureBack);
-	sf::Event event;
-	sf::Clock clock;
+	//sf::Texture textureBack;
+	//if (!textureBack.loadFromFile("assets/space.png")) {
+		//std::cout << "error";
+	//};
+   // sf::Sprite spriteBack;
+	//spriteBack.setTexture(textureBack);
+	//sf::Event event;
+	//sf::Clock clock;
+	/*
 	while (window.isOpen())
 	{
 		
@@ -53,6 +53,6 @@ int main() {
 		window.display();
 
 	}
-	
+	*/
 	return 0;
 }
