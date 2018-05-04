@@ -4,6 +4,7 @@
 #include<SFML/Graphics.hpp>
 #include"EnemyManager.h"
 #include"Player.h"
+#include"Collision.h"
 class Game
 {
 public:
@@ -19,6 +20,6 @@ private:
 	Player* newPlayer;
 	EnemyManager* enemyManage;
 	sf::Time timePerFrame;
-	
+	Collision* collision;
 };
 #endif // !GAME_H

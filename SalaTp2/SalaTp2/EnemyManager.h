@@ -9,10 +9,11 @@
 #include <stdlib.h>     /* srand, rand */
 #include <time.h>       /* time */
 using namespace std;
+#include"Player.h"
 class EnemyManager
 {
 public:
-	EnemyManager();
+	EnemyManager(Player* _player);
 	void Init();
 	void Draw();
 	void Move(sf::Time deltaTime);
@@ -30,6 +31,7 @@ public:
 private:
 	sf::Clock clock;
 	sf::Time elapsed;
+	Player*player;
 };
 
 #endif // !ENEMY_MANAGER_H

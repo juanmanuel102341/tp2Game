@@ -6,7 +6,7 @@ void GameManager::Init() {
 	basePlayer->Initialize();
 	basePlayer->Position(100, 300);
 
-	enemyManager = new EnemyManager();
+	//enemyManager = new EnemyManager();
 	enemyManager->window = window;
 	enemyManager->Init();
 	//baseEnemyA = new EnemyA();

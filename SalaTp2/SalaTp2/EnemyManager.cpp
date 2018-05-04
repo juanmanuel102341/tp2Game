@@ -3,16 +3,17 @@ void EnemyManager::Init(){
 	for (int i = 0; i < 30; i++) {
 		Entity*e;
 		e = new EnemyA();
+		
 		e->window = window;
 		e->Initialize();
 		listDead.push_back(e);
 	}
-	std::list<Entity*>::iterator it=listDead.begin();
-	Entity*e = *it;
-	float y = 50 + rand() % 580;
-	e->Position(800, y);
-	e->live = true;
-	listLive.push_back(e);
+	//std::list<Entity*>::iterator it=listDead.begin();
+	//Entity*e = *it;
+	//float y = 50 + rand() % 580;
+	//e->Position(750, y);
+	//e->live = true;
+	//listLive.push_back(e);
 	/*enemiesA = new EnemyA();
 	enemiesA->window = window;
 	enemiesA->Initialize();
@@ -47,6 +48,7 @@ Entity* EnemyManager::GetEnemy() {
 			std::cout << "y " << y<<endl;
 			e->Position(800, y);
 			e->live = true;
+			e->Persuit(player->sprite.getPosition());
 			return e;
 		}
 	}
@@ -71,6 +73,8 @@ void EnemyManager::SpawnA(){
 		elapsed = clock.restart();
 	}
 }
-EnemyManager::EnemyManager() {
+EnemyManager::EnemyManager(Player* _player) {
 	srand(time(NULL));
+	player=_player;
+
 }

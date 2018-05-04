@@ -3,7 +3,9 @@
 
 void Game::Render(){
 	window.clear();
+	if(!newPlayer->dead)
 	newPlayer->Draw();
+	
 	enemyManage->Draw();
 	window.display();
 
@@ -11,6 +13,8 @@ void Game::Render(){
 void Game::Update(sf::Time deltaTime){
 	newPlayer->Move(deltaTime);
 	enemyManage->Move(deltaTime);
+	collision->CollideBulletEnemy();
+	collision->CollideEnemyPlayer();
 }
 void Game::ProcessEvents(){
 	sf::Event event;
@@ -40,7 +44,7 @@ void Game::Run(){
 	{
 		sf::Time deltaTime = clock.restart();
 		//sf::Time elapsed = clock.restart();
-		std::cout << deltaTime.asSeconds() << endl;
+		//std::cout << deltaTime.asSeconds() << endl;
 		ProcessEvents();
 		Update(deltaTime);
 		//timeSinceLastUpdate += clock.restart();
@@ -65,9 +69,10 @@ Game::Game() : window(sf::VideoMode(800, 600), "My window"){
 	std::cout << "inicio juego" << endl;
 
 	newPlayer = new Player(&window);
-	enemyManage = new EnemyManager();
+	enemyManage = new EnemyManager(newPlayer);
 	enemyManage->window =&window;
 	enemyManage->Init();
+	collision = new Collision(enemyManage,newPlayer);
 	//timePerFrame = sf::seconds(1.f / 60.f);
 	
 

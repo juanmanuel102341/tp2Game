@@ -25,6 +25,7 @@ void Player::HandlePlayerInputs(sf::Keyboard::Key key, bool isPressed) {
 void Player::Draw() {
 	
 	window->draw(sprite);
+
 	for (std::list<Entity*>::iterator it = listBulletLives.begin(); it != listBulletLives.end(); ++it) {
 		Entity*e = *it;
 		e->Draw();
@@ -65,7 +66,7 @@ void Player::Atack(){
 void Player::CreationBullets(){
 	for (int i = 0; i < 40;i++) {
 		Entity*e;
-		e = new Bullet();
+		e = new Bullet(1);
 		e->window = window;
 		e->Initialize();
 		listBulletDeads.push_back(e);

@@ -18,6 +18,8 @@ public:
 	virtual void Destroy();
 	void HandlePlayerInputs(sf::Keyboard::Key key, bool isPressed);
 	sf::Sprite sprite;
+	list<Entity*>listBulletLives;
+	bool dead = false;
 private:
 	void Atack();
 	void CreationBullets();
@@ -36,7 +38,7 @@ private:
 	sf::Time elapsed;
 	float fireRate;
 	list<Entity*>listBulletDeads;
-	list<Entity*>listBulletLives;
+	
 	float velocity=50;
 };
 #endif // !PLAYER_H
