@@ -23,10 +23,12 @@ private:
 	void CreationBullets();
 	Entity*GetBullet();
 	void TakeOutBullet();
+	void MoveBullets(sf::Time deltaTime);
 	bool moveUp=false;
 	bool moveDown=false;
 	bool moveLeft=false;
 	bool moveRight=false;
+	bool shoot=false;
 	sf::RenderWindow* window;
 	
 	sf::Texture texture;
@@ -35,5 +37,6 @@ private:
 	float fireRate;
 	list<Entity*>listBulletDeads;
 	list<Entity*>listBulletLives;
+	float velocity=50;
 };
 #endif // !PLAYER_H

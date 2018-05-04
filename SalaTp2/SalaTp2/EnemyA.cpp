@@ -12,10 +12,10 @@ void EnemyA::Position(float x, float y) {
 }
 void EnemyA::Draw(){
 	window->draw(sprite);
-	Move();
+	
 }
-void EnemyA::Move(){
-	sprite.move(-velocity*timer.asSeconds(),0);
+void EnemyA::Move(sf::Time deltaTime){
+	sprite.move(-velocity*deltaTime.asSeconds(),0);
 }
 void EnemyA::Destroy(){
 

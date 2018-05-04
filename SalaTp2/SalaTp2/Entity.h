@@ -10,7 +10,7 @@ public:
 	virtual void Initialize()=0;
 	virtual void Draw()=0;
 	virtual void Position(float x, float y)=0;
-	virtual void Move()=0;
+	virtual void Move(sf::Time deltaTime)=0;
 	virtual void Destroy()=0;
 	sf::RenderWindow* window;
 	sf::Sprite sprite;

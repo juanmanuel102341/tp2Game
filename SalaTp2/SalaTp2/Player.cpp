@@ -3,9 +3,10 @@
 Player::Player(sf::RenderWindow* _window) {
 	//timer = sf::seconds(0.01f);
 	//velocity = 350;
-	//fireRate = 0.3f;
+	fireRate = 0.3f;
 	window = _window;
 	Initialize();
+	velocity = 250;
 }
 void Player::HandlePlayerInputs(sf::Keyboard::Key key, bool isPressed) {
 	if (key == sf::Keyboard::Up)
@@ -16,38 +17,49 @@ void Player::HandlePlayerInputs(sf::Keyboard::Key key, bool isPressed) {
 		 moveLeft= isPressed;
 	else if (key == sf::Keyboard::Right)
 		moveRight = isPressed;
+	if (key == sf::Keyboard::Space) {
+		shoot = isPressed;
+	}
+
 }
 void Player::Draw() {
 	
 	window->draw(sprite);
-	//for (std::list<Entity*>::iterator it = listBulletLives.begin(); it != listBulletLives.end(); ++it) {
-		//Entity*e = *it;
-		//e->Draw();
-	//}
-	//Move();
+	for (std::list<Entity*>::iterator it = listBulletLives.begin(); it != listBulletLives.end(); ++it) {
+		Entity*e = *it;
+		e->Draw();
+	}
+	
 
 }
 void Player::Move(sf::Time deltaTime) {
 	sf::Vector2f movement(0.f, 0.f);
-	if (moveUp)
-		movement.y -= 1.f;
-	if (moveDown)
-		movement.y += 1.f;
-	if (moveLeft)
-		movement.x -= 1.f;
-	if (moveRight)
-		movement.x += 1.f;
-	sprite.move(movement*deltaTime.asSeconds());
-
-	Atack();
-}
-void Player::Atack(){
 	elapsed = clock.getElapsedTime();
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)&&elapsed.asSeconds()>fireRate) {
-		listBulletLives.push_back(GetBullet());
-		elapsed = clock.restart();
+	if (moveUp)
+		movement.y -= velocity;
+	if (moveDown)
+		movement.y += velocity;
+	if (moveLeft)
+		movement.x -= velocity;
+	if (moveRight)
+		movement.x += velocity;
+	if (shoot&&elapsed.asSeconds() > fireRate)
+		Atack();
+
+
+	sprite.move(movement*deltaTime.asSeconds());
+	MoveBullets(deltaTime);
+}
+void Player::MoveBullets(sf::Time deltaTime) {
+	for (std::list<Entity*>::iterator it = listBulletLives.begin(); it != listBulletLives.end(); ++it) {
+		Entity*e = *it;
+		e -> Move(deltaTime);
 	}
 	TakeOutBullet();
+}
+void Player::Atack(){
+	listBulletLives.push_back(GetBullet());
+	elapsed = clock.restart();
 }
 
 void Player::CreationBullets(){
@@ -88,7 +100,7 @@ void Player::Initialize() {
 		std::cout << "error";
 	};
 	sprite.setTexture(texture);
-	//CreationBullets();
+	CreationBullets();
 	//std::cout << "scale x" << sprite.getScale().x <<std::endl;
 }
 void Player::Position(float x, float y) {

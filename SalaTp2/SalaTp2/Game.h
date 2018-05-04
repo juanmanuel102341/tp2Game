@@ -2,7 +2,7 @@
 #define GAME_H
 #include<SFML/Window.hpp>
 #include<SFML/Graphics.hpp>
-#
+#include"EnemyManager.h"
 #include"Player.h"
 class Game
 {
@@ -17,7 +17,7 @@ private:
 	void Render();
 	sf::RenderWindow window;
 	Player* newPlayer;
-	
+	EnemyManager* enemyManage;
 	sf::Time timePerFrame;
 	
 };

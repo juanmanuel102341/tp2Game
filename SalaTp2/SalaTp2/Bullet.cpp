@@ -12,10 +12,9 @@ void Bullet::Position(float x, float y) {
 }
 void Bullet::Draw(){
 	window->draw(sprite);
-	Move();
 }
-void Bullet::Move() {
-	sprite.move(velocity*timer.asSeconds() , 0);
+void Bullet::Move(sf::Time deltaTime) {
+	sprite.move(velocity*deltaTime.asSeconds() , 0);
 }
 void Bullet::Destroy(){
 
@@ -23,4 +22,5 @@ void Bullet::Destroy(){
 Bullet::Bullet(){
 	velocity = 700;
 	timer = sf::seconds(0.01f);
+	Initialize();
 }

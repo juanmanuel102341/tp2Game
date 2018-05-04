@@ -15,6 +15,7 @@ public:
 	EnemyManager();
 	void Init();
 	void Draw();
+	void Move(sf::Time deltaTime);
 //	~EnemyManager();
 	void SpawnA();
 	Entity* GetEnemy();

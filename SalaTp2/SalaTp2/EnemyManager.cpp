@@ -21,19 +21,22 @@ void EnemyManager::Init(){
 	*/
 	}
 void EnemyManager::Draw() {
-	elapsed= clock.getElapsedTime();
+	
 	for(std::list<Entity*>::iterator it = listLive.begin(); it != listLive.end(); ++it) {	
 	
 		Entity*e=*it;
 		e->Draw();
-	
-	}
+}
 	//std::cout<<"tiempo "<<timing
-	if (elapsed.asSeconds() > 2) {
-		
-		listLive.push_back(GetEnemy());
-		elapsed = clock.restart();
+	
+}
+void EnemyManager::Move(sf::Time deltaTime){
+	for (std::list<Entity*>::iterator it = listLive.begin(); it != listLive.end(); ++it) {
+		Entity*e = *it;
+		e->Move(deltaTime);
 	}
+	SpawnA();
+
 	TakeOut();
 }
 Entity* EnemyManager::GetEnemy() {
@@ -61,7 +64,12 @@ void EnemyManager::TakeOut() {
 }
 
 void EnemyManager::SpawnA(){
+	elapsed = clock.getElapsedTime();
+	if (elapsed.asSeconds() > 2) {
 
+		listLive.push_back(GetEnemy());
+		elapsed = clock.restart();
+	}
 }
 EnemyManager::EnemyManager() {
 	srand(time(NULL));
