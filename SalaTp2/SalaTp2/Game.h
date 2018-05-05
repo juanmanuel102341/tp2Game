@@ -5,6 +5,7 @@
 #include"EnemyManager.h"
 #include"Player.h"
 #include"Collision.h"
+#include"Back.h"
 class Game
 {
 public:
@@ -18,6 +19,7 @@ private:
 	void Render();
 	sf::RenderWindow window;
 	Player* newPlayer;
+	Back*back;
 	EnemyManager* enemyManage;
 	sf::Time timePerFrame;
 	Collision* collision;
