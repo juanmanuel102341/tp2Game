@@ -4,6 +4,7 @@
 #include<list>
 #include"EnemyA.h"
 #include"Entity.h"
+#include"Enemigo.h"
 #include<SFML/Window.hpp>
 #include <stdio.h>      /* printf, scanf, puts, NULL */
 #include <stdlib.h>     /* srand, rand */
@@ -19,14 +20,14 @@ public:
 	void Move(sf::Time deltaTime);
 //	~EnemyManager();
 	void SpawnA();
-	Entity* GetEnemy();
+	Enemigo* GetEnemy();
 	void TakeOut();
 	sf::RenderWindow* window;
 
 
-	Entity* enemiesA;
-	std::list<Entity*>listDead;
-	std::list<Entity*>listLive;
+	Enemigo* enemiesA;
+	std::list<Enemigo*>listDead;
+	std::list<Enemigo*>listLive;
 	
 private:
 	sf::Clock clock;

@@ -10,9 +10,9 @@ void Collision::CollideBulletEnemy() {
 
 	for (std::list<Entity*>::iterator it = player->listBulletLives.begin(); it != player->listBulletLives.end(); ++it) {
 		Entity*eBullet = *it;
-		for (std::list<Entity*>::iterator it2 = enemyManager->listLive.begin(); it2 != enemyManager->listLive.end(); ++it2) {
+		for (std::list<Enemigo*>::iterator it2 = enemyManager->listLive.begin(); it2 != enemyManager->listLive.end(); ++it2) {
 			
-			Entity*eEnemy = *it2;
+			Enemigo*eEnemy = *it2;
 		if(eBullet->sprite.getGlobalBounds().intersects(eEnemy->sprite.getGlobalBounds())){
 		
 			std::cout << "contacto" << endl;
@@ -28,8 +28,8 @@ void Collision::CollideBulletEnemy() {
 
 }
 void Collision::CollideEnemyPlayer() {
-	for (std::list<Entity*>::iterator it =enemyManager->listLive.begin(); it != enemyManager->listLive.end(); ++it) {
-		Entity*enemy=*it;
+	for (std::list<Enemigo*>::iterator it =enemyManager->listLive.begin(); it != enemyManager->listLive.end(); ++it) {
+		Enemigo*enemy=*it;
 		if (enemy->sprite.getGlobalBounds().intersects(player->sprite.getGlobalBounds())) {
 			std::cout << "contacto " << endl;
 			player->dead = true;
@@ -39,17 +39,25 @@ void Collision::CollideEnemyPlayer() {
 		}
 	}
 }
-/*
+
 void Collision::CollideBulletPlayer() {
-	for (std::list<Entity*>::iterator it = enemyManager->listLive(); it != enemyManager->listLive.end(); ++it) {
-		Entity*enemy = *it;
-		if (enemy->sprite.getGlobalBounds().intersects(player->sprite.getGlobalBounds())) {
-			std::cout << "contacto " << endl;
-			player->dead = true;
-			enemy->live = false;
-			enemyManager->listLive.erase(it);
-			return;
+	for (std::list<Enemigo*>::iterator it = enemyManager->listLive.begin(); it != enemyManager->listLive.end(); ++it) {
+
+		Enemigo*enemy = *it;
+		for (std::list<Entity*>::iterator it2 = enemy->listBulletLives.begin(); it2 != enemy->listBulletLives.end(); ++it2) {
+			Entity*bullet = *it2;
+			if (bullet->sprite.getGlobalBounds().intersects(player->sprite.getGlobalBounds())) {
+				std::cout << "contacto " << endl;
+				player->dead = true;
+				bullet->live = false;
+				enemy->listBulletLives.erase(it2);
+				return;
+				//enemy->live = false;
+				//enemyManager->listLive.erase(it);
+
+			}
+
 		}
+
 	}
 }
-*/

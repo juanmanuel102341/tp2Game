@@ -1,7 +1,7 @@
 #include"EnemyManager.h"
 void EnemyManager::Init(){
 	for (int i = 0; i < 30; i++) {
-		Entity*e;
+		Enemigo*e;
 		e = new EnemyA();
 		
 		e->window = window;
@@ -23,26 +23,26 @@ void EnemyManager::Init(){
 	}
 void EnemyManager::Draw() {
 	
-	for(std::list<Entity*>::iterator it = listLive.begin(); it != listLive.end(); ++it) {	
+	for(std::list<Enemigo*>::iterator it = listLive.begin(); it != listLive.end(); ++it) {
 	
-		Entity*e=*it;
+		Enemigo*e=*it;
 		e->Draw();
 }
 	//std::cout<<"tiempo "<<timing
 	
 }
 void EnemyManager::Move(sf::Time deltaTime){
-	for (std::list<Entity*>::iterator it = listLive.begin(); it != listLive.end(); ++it) {
-		Entity*e = *it;
+	for (std::list<Enemigo*>::iterator it = listLive.begin(); it != listLive.end(); ++it) {
+		Enemigo*e = *it;
 		e->Move(deltaTime);
 	}
 	SpawnA();
 
 	TakeOut();
 }
-Entity* EnemyManager::GetEnemy() {
-	for (std::list<Entity*>::iterator it = listDead.begin(); it != listDead.end(); ++it) {
-		Entity*e = *it;
+Enemigo* EnemyManager::GetEnemy() {
+	for (std::list<Enemigo*>::iterator it = listDead.begin(); it != listDead.end(); ++it) {
+		Enemigo*e = *it;
 		if (!e->live) {
 			float y =50+ rand() %   600;
 			std::cout << "y " << y<<endl;
@@ -54,8 +54,8 @@ Entity* EnemyManager::GetEnemy() {
 	}
 }
 void EnemyManager::TakeOut() {
-	for (std::list<Entity*>::iterator it = listLive.begin(); it != listLive.end(); ++it) {
-		Entity*e = *it;
+	for (std::list<Enemigo*>::iterator it = listLive.begin(); it != listLive.end(); ++it) {
+		Enemigo*e = *it;
 		if (e->sprite.getPosition().x < 0) {
 			e->live = false;
 			listLive.erase(it);

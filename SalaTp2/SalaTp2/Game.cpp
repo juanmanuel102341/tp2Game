@@ -15,6 +15,7 @@ void Game::Update(sf::Time deltaTime){
 	enemyManage->Move(deltaTime);
 	collision->CollideBulletEnemy();
 	collision->CollideEnemyPlayer();
+	collision->CollideBulletPlayer();
 }
 void Game::ProcessEvents(){
 	sf::Event event;

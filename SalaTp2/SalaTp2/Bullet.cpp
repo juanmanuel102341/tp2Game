@@ -7,7 +7,6 @@ void Bullet::Initialize(){
 	};
 	sprite.setTexture(texture);
 }
-void Bullet::Persuit(sf::Vector2f v){}
 void Bullet::Position(float x, float y) {
 	sprite.setPosition(x, y);
 }

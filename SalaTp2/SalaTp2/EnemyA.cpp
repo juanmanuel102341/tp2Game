@@ -95,6 +95,6 @@ EnemyA::EnemyA() {
 	//timer= sf::seconds(0.01f);
 	//vecPLayer = posPlayer;
 	velocity = 350;
-	fireRate = 2.5f;
+	fireRate = 1.8f;
 
 }

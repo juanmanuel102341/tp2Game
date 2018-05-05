@@ -12,7 +12,7 @@ public:
 	virtual void Draw();
 	virtual void Move(sf::Time deltaTime);
 	virtual void Destroy();
-	void Persuit(sf::Vector2f posPlayer);
+	
 private:
 	int directionx;
 };
